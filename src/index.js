@@ -35,7 +35,7 @@ const authors = [
   },
   {
     name: "Mark Millar",
-    imageUrl: "images/markmillarjpg",
+    imageUrl: "images/markmillar.jpg",
     imageSource: "Wikimedia Comics",
     books: ["Huck", "Jupiter's Circle", "Reborn", "Empress"],
   },
