@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import "./bootstrap.min.css";
 
@@ -13,17 +13,27 @@ function Hero() {
   );
 }
 
-function Turn({author, books}) {
-  return (){
-    <div className="row turn" style={{backgroundColor : "white"}}>
-      <div className="col-4">
-      <img src={author.imageUrl} className="authorimage" alt="Author"/>
+function Book({ title }) {
+  return (
+    <div className="answer">
+      <h4>{title}</h4>
     </div>
-    <div className="col-6">
-      {books.map((title) => <p>{title}</p>)}
+  );
+}
+
+function Turn({ author, books }) {
+  return (
+    <div className="row turn" style={{ backgroundColor: "white" }}>
+      <div className="col-4 offset-1">
+        <img src={author.imageUrl} className="author-image" alt="Author" />
+      </div>
+      <div className="col-6">
+        {books.map((title) => (
+          <Book title={title} key={title} />
+        ))}
+      </div>
     </div>
-    </div>
-  }
+  );
 }
 
 function Continue() {
@@ -42,15 +52,16 @@ function Footer() {
     </div>
   );
 }
-export default class AuthorQuiz extends Component {
-  render() {
-    return (
-      <div className="container-fluid">
-        <Hero />
-        <Turn />
-        <Continue />
-        <Footer />
-      </div>
-    );
-  }
+
+function AuthorQuiz({ turnData }) {
+  return (
+    <div className="container-fluid">
+      <Hero />
+      <Turn {...turnData} />
+      <Continue />
+      <Footer />
+    </div>
+  );
 }
+
+export default AuthorQuiz;
